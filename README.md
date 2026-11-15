@@ -1,6 +1,6 @@
 # Clinic Booking Support Lab
 
-A guided PostgreSQL portfolio project by Deepu Karthik, practising application-support investigations with synthetic healthcare-style data.
+A guided PostgreSQL portfolio project by Deepu Karthik, practising application support investigations with synthetic healthcare-style data.
 
 ## Results
 
