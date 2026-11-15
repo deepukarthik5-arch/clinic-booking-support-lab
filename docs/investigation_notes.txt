@@ -1,0 +1,92 @@
+CLINIC BOOKING SUPPORT LAB
+Missing Department Investigation
+Date: 15 November 2026
+
+PROJECT
+A PostgreSQL learning project using 100 fictional patients,
+200 referrals and 3 departments. No real patient data was used.
+
+PROBLEM
+Identify referrals with no department assigned.
+
+METHOD
+Used WHERE department_id IS NULL to find affected records.
+Displayed referral_id, patient_id, referral_date,
+department_id and status.
+Sorted results by referral_id in ascending order.
+
+QUERY
+SELECT referral_id, patient_id, referral_date, department_id, status
+FROM referrals
+WHERE department_id IS NULL
+ORDER BY referral_id ASC;
+
+FINDINGS
+11 referrals had a missing department ID.
+Their referral IDs were:
+123, 140, 157, 174, 191, 208, 225, 242, 259, 276, 293.
+
+EXPORT CHECKS
+Exported the query results and opened the file in Excel.
+Confirmed 11 data rows, excluding the header, and 5 columns.
+Confirmed referral IDs were sorted in ascending order.
+Missing department values were displayed as NULL.
+Widened the date column to display dates clearly.
+
+NEXT ACTION
+Ask the responsible team to confirm the correct department
+against the source referral documentation before updating
+each record. Do not guess the department.
+
+STATUS
+The 11 missing departments remain unresolved pending
+confirmation. No changes were made to these records
+during this investigation.
+
+FILES
+missing_department_check.sql - investigation query.
+investigation_notes.txt - findings and next actions.
+missing_department_referrals.csv - verified CSV results.
+
+
+INVESTIGATION 2: OVERDUE PENDING REFERRALS
+
+Reporting date: 12 November 2026
+
+PROBLEM
+Identify Pending referrals waiting more than 14 days.
+
+METHOD
+Joined referrals to patients to display patient names.
+Used a LEFT JOIN to departments so referrals with missing
+departments remained visible.
+Calculated days_waiting by subtracting referral_date from
+the reporting date.
+Filtered for Pending status and waits greater than 14 days.
+Sorted by days_waiting, longest first.
+
+FINDINGS
+30 referrals met the criteria.
+Waiting times ranged from 16 to 28 days.
+Two referrals had no department assigned. These were kept
+visible so they could also be reviewed.
+Pending status alone does not establish triage status or
+clinical priority.
+
+VALIDATION
+Checked the export contained 30 data rows plus one header
+row and four columns.
+Confirmed waiting times were sorted from 28 down to 16 days.
+Confirmed two department names were missing.
+
+NEXT ACTION
+Ask the responsible team to confirm the correct departments
+against source documentation and review the pending referrals.
+No records were changed during this investigation.
+
+FILES
+overdue_pending_referrals.sql - investigation query.
+overdue_pending_referrals.csv - verified results export.
+
+DATA
+All records are fictional and used for learning purposes.
